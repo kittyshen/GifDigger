@@ -9,25 +9,27 @@ html{
 }
 body {
     margin-bottom:90px;  /*important adding this margin if use "sticky footer" in bootstrap otherwise some content might get covered by footer space */
-    /* background-image:url("../images/Flowers.jpg"); */
+    background-image:url("../images/absBG.png");
     background-repeat: round;
     min-height:100%;
-    color:white;
+    color:rgb(210, 210, 210);
 }
 .container{
     min-height:100%;
+    background-color: rgba(0, 0, 0, 0.742);
+
 }
 h1{
     font-size:2.3em;
-    color:white;
+    color:rgb(210, 210, 210);
 }
 h2{
     font-size:2em;
-    color:#66bce4;
+    color:rgb(210, 210, 210);
 }
 h4{
     font-size:1.7em ;
-    color:#66bce4;
+    color:rgb(210, 210, 210);
 }
 img{
     max-block-size: 200px;
@@ -42,7 +44,7 @@ img{
 .footer{
     clear: both;
     height:80px;
-    background-color: dimgrey;
+    background-color: black;
     /* border-top: 8px solid #66bce4; */
     padding-top: 30px;
     text-align:center;
@@ -56,15 +58,15 @@ img{
     text-align: center;
     margin: 0 auto;
     /* padding: 0.3em 0; */
-    background-color: dimgrey;
+    background-color: rgb(0, 0, 0);
     /* border: 0.3em solid #66bce4; */
     /* border-radius:.5em; */
 
 }
 .row{
     padding:0.8em;
-    margin-top: 1em;
-    background-color:rgba(211, 211, 211, 0.89) !important;
+    margin-top: 0.2em;
+    /* background-color:rgba(211, 211, 211, 0.89) !important; */
 }
 
 .col-sm-12 > .jumbotron {
@@ -74,7 +76,9 @@ img{
     padding:0.8em;
     padding-bottom:1em; 
     margin-bottom:0.3em;
-    box-shadow: 0.05em 0.05em rgb(146, 146, 146);
+    background-color: rgba(0, 0, 0, 0.756);
+
+    /* box-shadow: 0.05em 0.05em rgb(146, 146, 146); */
 }
 .question{
     background-color:dimgrey;
