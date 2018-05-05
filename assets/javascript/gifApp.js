@@ -14,7 +14,7 @@ Step10 capture the form input value from the user input, push the value of strin
 Step11 when user click their own button,start ajax call according to user's input button
 */
 
-var gameArray = ["Beyond Two Souls", "Dark Souls 2", "Heavy Rain", "Mass Effect 3", "Battle Field"];
+var gameArray = ["Beyond Two Souls", "Dark Souls 2", "Heavy Rain", "Mass Effect 3", "Destiny 2"];
 
 //render all the bottons according to the game array data
 var buttonHooker = $("#buttonGroup");  // create a variable to hook all buttons ad future user input append
@@ -38,6 +38,52 @@ function renderUserButton(string){       // create a function to render user inp
     buttonHooker.append(newButton);
 }
 // renderUserButton("New game");  // testing 
+
+function renderImg(obj){
+    $("#gifContainer").html("");
+    for(var i =0; i<obj.data.length; i++ ){
+        console.log(obj.data[i].images.original_still.url);
+        var newDiv =$("<div>").attr("class","imgWrap jumbotron col-md-3 col-sm-4 col-xs-6");
+        var newImg = $("<img>").attr("src", obj.data[i].images.original_still.url);
+        newImg.attr("class","images");
+        newImg.attr("data-still",obj.data[i].images.original.url);
+        newImg.attr("data-animate",obj.data[i].images.original_still.url);
+        newImg.attr("data-state","still");
+        var newP = $("<p>").text(obj.data[i].title);
+        newP.attr("class","text-center");
+        newP.append("<br> Rating: "+obj.data[i].rating);
+        newDiv.append(newImg,newP);
+        $("#gifContainer").append(newDiv);
+    } 
+}
+
+//define a variable to capture user click and store button's value into the var
+var currentQueryVar;
+$(".buttons").on("click", function(){
+    currentQueryVar = $(this).val();
+    console.log(currentQueryVar);
+    var currentURL = "https://api.giphy.com/v1/gifs/search?q=" + currentQueryVar + "&api_key=dc6zaTOxFJmzC&limit=10";
+
+    $.ajax({
+        url:currentURL,
+        method: "GET"
+    }).then(function(response){
+        console.log(response);
+    
+        renderImg(response);
+    });
+
+
+});
+
+// render first page with some content
+var defaultURL = "https://api.giphy.com/v1/gifs/search?q=" + gameArray[0] + "&api_key=dc6zaTOxFJmzC&limit=10"
+$.ajax({
+    url:defaultURL,
+    method: "GET"
+}).then(function(response){
+    renderImg(response);
+});
 
 
 
