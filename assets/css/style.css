@@ -22,6 +22,7 @@ body {
 h1{
     font-size:2.3em;
     color:rgb(210, 210, 210);
+    text-shadow: 0.03em 0.03em rgb(255, 255, 255);
 }
 h2{
     font-size:2em;
@@ -31,13 +32,25 @@ h4{
     font-size:1.7em ;
     color:rgb(210, 210, 210);
 }
+.badge{
+    color:rgb(210, 210, 210);
+    background-color: rgb(75, 75, 75);
+    border:1px solid rgb(126, 126, 126);
+    box-shadow: 0.1em 0.1em rgb(220, 220, 220);
+    margin : 0 0.3em;
+
+}
+.badge:empty{
+    display:block;
+    margin-top:0.3em;
+}
 .images{
-    max-block-size: 150px;
+    max-block-size: 200px;
+    max-width: 230px;
     float:left;
     margin-left: auto; 
     margin-right: auto; 
     display: block; 
-    /* width: 50%; */
 }
 
 .footer{
@@ -73,36 +86,24 @@ h4{
 }
 .jumbotron {
     padding:0.8em;
-    padding-bottom:1em; 
+    padding-bottom:0.3em; 
     margin-bottom:0.3em;
     background-color: rgba(0, 0, 0, 0.756);
 
     /* box-shadow: 0.05em 0.05em rgb(146, 146, 146); */
 }
-.question{
-    background-color:dimgrey;
-    color:white;
-}
-.button{
-    padding:0.4em;
-    margin:0.5em;
-    background-color: white;
-    box-shadow: 0.05em 0.05em rgb(146, 146, 146);
-}
-.button:hover{
-    background-color: rgb(213, 171, 213);
-    border: 3px dotted dimgrey;
-    color:dimgrey;
-}
+
+
 .container{
     min-height:100%;
 }
-.card{
-    display: inline;
-    background-color: #e9ecef;
-    border-radius:.3rem;
-}
 
+@media(max-width:768px) {
+    .images{
+        max-block-size: 170px;
+        max-width: 170px;
+    }
+}
 @media(max-width:578px) {
     .jumbotron{
         /* max-width: 50% !important; */
