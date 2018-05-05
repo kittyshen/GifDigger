@@ -14,7 +14,7 @@ Step10 capture the form input value from the user input, push the value of strin
 Step11 when user click their own button,start ajax call according to user's input button
 */
 
-var gameArray = ["Beyond Two Souls", "Dark Souls 2", "Heavy Rain", "Mass Effect 3", "Destiny 2"];
+var gameArray = ["Beyond Two Souls", "Dark Souls 2", "Monster Hunter: World", "Detroit: Become Human", "Mass Effect 3", "Destiny 2"];
 
 //render all the bottons according to the game array data
 var buttonHooker = $("#buttonGroup");  // create a variable to hook all buttons ad future user input append
@@ -42,7 +42,7 @@ function renderUserButton(string){       // create a function to render user inp
 function renderImg(obj){
     $("#gifContainer").html("");
     for(var i =0; i<obj.data.length; i++ ){
-        console.log(obj.data[i].images.original_still.url);
+        // console.log(obj.data[i].images.original_still.url);
         var newDiv =$("<div>").attr("class","imgWrap jumbotron col-md-3 col-sm-4 col-xs-6");
         var newImg = $("<img>").attr("src", obj.data[i].images.original_still.url);
         newImg.attr("class","images");
@@ -76,7 +76,7 @@ $(".buttons").on("click", function(){
 
 });
 
-// render first page with some content
+// render first page with some default content
 var defaultURL = "https://api.giphy.com/v1/gifs/search?q=" + gameArray[0] + "&api_key=dc6zaTOxFJmzC&limit=10"
 $.ajax({
     url:defaultURL,
@@ -84,6 +84,22 @@ $.ajax({
 }).then(function(response){
     renderImg(response);
 });
+
+// change image src after click event happening on the images
+$(document).on("click",".images",function(){
+    if($(this).attr("data-state") == "still"){
+        console.log("hello");
+        $(this).attr("src",$(this).attr("data-animate"));
+        $(this).attr("data-state","animate");
+    }
+    else{
+        $(this).attr("src",$(this).attr("data-still"));
+        $(this).attr("data-state","still");
+    }
+
+});
+
+
 
 
 
