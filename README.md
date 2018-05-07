@@ -18,10 +18,6 @@ In this assignment, you'll use the GIPHY API to make a dynamic web page that pop
    * Like many APIs, GIPHY requires developers to use a key to access their API data. To use the GIPHY API, you'll need a GIPHY account (don't worry, it's free!) and then obtain an API Key by [creating an app](https://developers.giphy.com/dashboard/?create=true).
    * Make sure you switch the protocol in the query URL from **`http to https`**, or the app may not work properly when deployed to Github Pages.
 
-2. **[Watch the demo video](homework_demo.mov)**
-
-   * You should have a high-level understanding of how this assignment works before attempting to code it.
-
 ### Instructions
 
 1. Before you can make any part of our site work, you need to create an array of strings, each one related to a topic that interests you. Save it to a variable called `topics`.
@@ -50,9 +46,67 @@ In this assignment, you'll use the GIPHY API to make a dynamic web page that pop
 
 ## Key learning points
 ```javascript
-
+    $.ajax({
+        url:currentURL,
+        method: "GET"
+    }).then(function(response){
+        console.log(response);
+    
+        renderImg(response);
+    });
 ```
-* 
+* ajax calling format
+
+```javascript
+function renderImg(obj){
+    $("#gifContainer").html("");  // empty the container for new content;
+    for(var i =0; i<obj.data.length; i++ ){
+      ...
+    }
+  ...
+}
+```
+* render a returned Json object
+
+```javascript
+if(imgRatio<2.3&& imgRatio>1.4 && obj.data[i].images.original_still.width >200){    
+    console.log("right size");
+    ...
+}
+```
+* filer the returned object by it's size information, render those only theright sized images
+
+```javascript
+function renderButtons(arr){             // create a function to render current game array 
+    for (var i = 0; i <arr.length; i++){
+        var newButton = $("<button>");
+        newButton.text(arr[i]);
+        newButton.attr("class","buttons text-center badge badge-pill badge-secondary");
+        newButton.attr("value",arr[i]);
+        buttonHooker.append(newButton);
+    }
+}
+```
+* only button tags can assign value and retrieve the value later on
+
+```javascript
+newImg.attr("data-still",obj.data[i].images.original.url);
+newImg.attr("data-animate",obj.data[i].images.original_still.url);
+newImg.attr("data-state","still");
+```
+* define two data attribute to store url link info, toggle img src attribute  \according to user click
+
+```javascript
+$("#game-input").on("change",function(){
+    var game = $("#game-input").val().trim();
+    if(game!= ''){
+        gameArray.push(game);
+    }
+    renderUserButton(game);
+    $("#game-input").val("");
+})
+```
+* review syntax for onchange event handler.
 
 ## Installation
 Download the zip file, unzip on the desktop, open index.html

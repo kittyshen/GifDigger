@@ -110,8 +110,21 @@ $("#add-game").on("click", function(event) {
     // This line of code will grab the input from the textbox
     var game = $("#game-input").val().trim();
     // The game from the textbox is then added to gameArray
-    gameArray.push(game);
-  
+    if(game!= ''){
+        gameArray.push(game);
+    }
+    //Render the new Button
+    // renderUserButton(game);
+});
+
+$("#game-input").on("change",function(){
+    var game = $("#game-input").val().trim();
+    // The game from the textbox is then added to gameArray
+    if(game!= ''){
+        gameArray.push(game);
+    }
     //Render the new Button
     renderUserButton(game);
-});
+    $("#game-input").val("");
+    console.log(gameArray);
+})
