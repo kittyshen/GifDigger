@@ -74,7 +74,7 @@ if(imgRatio<2.3&& imgRatio>1.4 && obj.data[i].images.original_still.width >200){
     ...
 }
 ```
-* filer the returned object by it's size information, render those only theright sized images
+* filer the returned object by it's size information, render those only the right sized images
 
 ```javascript
 function renderButtons(arr){             // create a function to render current game array 
@@ -94,7 +94,7 @@ newImg.attr("data-still",obj.data[i].images.original.url);
 newImg.attr("data-animate",obj.data[i].images.original_still.url);
 newImg.attr("data-state","still");
 ```
-* define two data attribute to store url link info, toggle img src attribute  \according to user click
+* define two data attribute to store url link info, toggle img src attribute according to user click
 
 ```javascript
 $("#game-input").on("change",function(){
@@ -106,7 +106,13 @@ $("#game-input").on("change",function(){
     $("#game-input").val("");
 })
 ```
-* review syntax for onchange event handler.
+* review syntax for onchange event handler
+
+```javascript
+  localStorage.setItem("gameArrayInStorage",JSON.stringify(gameArray));
+```
+* how to use localStorage to store varibles including the [] type data using 
+json stringify build in function
 
 ## Installation
 Download the zip file, unzip on the desktop, open index.html

@@ -15,7 +15,11 @@ Step11 when user click their own button,start ajax call according to user's inpu
 */
 
 var gameArray = ["Beyond Two Souls", "Dark Souls 3", "Monster Hunter: World", "Detroit: Become Human", "Mass Effect 3", "Destiny 2"];
-
+// adding the following code to enable user retrive user added game names saved on local storage.
+console.log(localStorage.getItem("gameArrayInStorage"));
+if(JSON.parse(localStorage.getItem("gameArrayInStorage")) != null){
+    gameArray =JSON.parse(localStorage.getItem("gameArrayInStorage"));
+}    
 //render all the bottons according to the game array data
 var buttonHooker = $("#buttonGroup");  // create a variable to hook all buttons ad future user input append
 
@@ -78,8 +82,6 @@ $(document).on("click", ".buttons", function(){
     
         renderImg(response);
     });
-
-
 });
 
 // render first page with some default content
@@ -113,6 +115,7 @@ $("#add-game").on("click", function(event) {
     if(game!= ''){
         gameArray.push(game);
         renderUserButton(game);
+        localStorage.setItem("gameArrayInStorage",JSON.stringify(gameArray));
     }
     //Render the new Button
     $("#game-input").val("");
