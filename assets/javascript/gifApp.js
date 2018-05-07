@@ -112,19 +112,20 @@ $("#add-game").on("click", function(event) {
     // The game from the textbox is then added to gameArray
     if(game!= ''){
         gameArray.push(game);
+        renderUserButton(game);
     }
     //Render the new Button
-    // renderUserButton(game);
+    $("#game-input").val("");
 });
 
-$("#game-input").on("change",function(){
-    var game = $("#game-input").val().trim();
-    // The game from the textbox is then added to gameArray
-    if(game!= ''){
-        gameArray.push(game);
-    }
-    //Render the new Button
-    renderUserButton(game);
-    $("#game-input").val("");
-    console.log(gameArray);
-})
+// $("#game-input").on("change",function(){
+//     var game = $("#game-input").val().trim();
+//     // The game from the textbox is then added to gameArray
+//     if(game!= ''){
+//         gameArray.push(game);
+//     }
+//     //Render the new Button
+//     renderUserButton(game);
+//     $("#game-input").val("");
+//     console.log(gameArray);
+// })
